@@ -12,9 +12,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class SavingsCalculatorTest extends TestBase {
 
-    WebDriver driver;
-
-
     @Test
     public void itShouldDisplayTitle() {
         Assert.assertEquals("Savings Calculator", driver.findElement(By.cssSelector("h1")).getText());
