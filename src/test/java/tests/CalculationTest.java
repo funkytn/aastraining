@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 public class CalculationTest {
 
     WebDriver driver;
+    private Object enterEmail;
 
     @Before
     public void setUp() {
@@ -21,7 +22,7 @@ public class CalculationTest {
     }
 
     @Test
-    public void itShouldCalculateTotalIncome(){
+    public void itShouldCalculateTotalIncome() {
 
         //1. vybrat fond, zadat sumu, roky, email
         //1.vybrat fond
@@ -39,9 +40,8 @@ public class CalculationTest {
     }
 
 
-
     @Test
-    public void itShouldCalculateInterestIncome(){
+    public void itShouldCalculateInterestIncome() {
 
         //1. vybrat fond, zadat sumu, roky, email
 
@@ -81,21 +81,45 @@ public class CalculationTest {
     }
 
 
+    @Test
+    public void itShouldCalculateTotalIncomeForEachFund() {
+
+        String[] arrayOfFunds = {"Tom & Jerry corp", "Batman's Cave Development", "McDuck's safe"};
+        for (String arrayOfFund : arrayOfFunds) {
+            selectFund(arrayOfFund);
+            enterOneTimeInvestment("1500");
+            enterYears("2");
+            selectEmail("info@furbo.sk");
+
+
+        }
+
+    }
+
     private void selectFund(String fundToSelect) {
         new Select(driver.findElement(By.id("fundSelect"))).selectByVisibleText(fundToSelect);
     }
-    private void enterOneTimeInvestment (String amountToEnter) {
+
+    private void enterOneTimeInvestment(String amountToEnter) {
+        driver.findElement(By.id("oneTimeInvestmentInput")).clear();
         driver.findElement(By.id("oneTimeInvestmentInput")).sendKeys(amountToEnter);
     }
+
     private void enterYears(String yearsToEnter) {
+        driver.findElement(By.id("yearsInput")).clear();
         driver.findElement(By.id("yearsInput")).sendKeys(yearsToEnter);
     }
 
-        @After
-        public void tearDown() {
-            driver.close();
-            driver.quit();
+    private void selectEmail(String emailToSelect) {
+        driver.findElement(By.id("emailInput")).clear();
+        driver.findElement(By.id("emailInput")).sendKeys(emailToSelect);
+    }
 
-        }
+    @After
+    public void tearDown() {
+        //           driver.close();
+        //           driver.quit();
+
+    }
 
 }
