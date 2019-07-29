@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.Select;
 public class CalculationTest {
 
     WebDriver driver;
-    private Object enterEmail;
 
     @Before
     public void setUp() {
