@@ -13,12 +13,6 @@ public class SavingsCalculatorTest {
 
     WebDriver driver;
 
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("http://localhost/savingscalculator.php");
-    }
 
     @Test
     public void itShouldDisplayTitle() {
@@ -53,9 +47,4 @@ public class SavingsCalculatorTest {
                 new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText());
     }
 
-    @After
-    public void tearDown() {
-        driver.close();
-        driver.quit();
-    }
 }

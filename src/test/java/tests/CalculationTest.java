@@ -13,12 +13,6 @@ public class CalculationTest {
 
     WebDriver driver;
 
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("http://localhost/savingscalculator.php");
-    }
 
     @Test
     public void itShouldCalculateTotalIncome() {
@@ -119,11 +113,6 @@ public class CalculationTest {
         driver.findElement(By.id("emailInput")).sendKeys(emailToSelect);
     }
 
-    @After
-    public void tearDown() {
-                  driver.close();
-                  driver.quit();
 
-    }
 
 }
