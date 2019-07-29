@@ -1,13 +1,13 @@
 package tests;
 
-        import org.junit.After;
-        import org.junit.Assert;
-        import org.junit.Before;
-        import org.junit.Test;
-        import org.openqa.selenium.By;
-        import org.openqa.selenium.WebDriver;
-        import org.openqa.selenium.chrome.ChromeDriver;
-        import org.openqa.selenium.support.ui.Select;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class SavingsCalculatorTest {
 
@@ -43,6 +43,14 @@ public class SavingsCalculatorTest {
         driver.findElement(By.id("emailInput")).sendKeys("info@furbo.sk");
         //5.overit button
         Assert.assertTrue(driver.findElement(By.cssSelector("button.btn-block")).isEnabled());
+    }
+
+    @Test
+    public void itShouldNotSelectAnyFundOnPageOpen() {
+        new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText();
+        System.out.println(new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText());
+        Assert.assertEquals("Select your fund",
+                new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText());
     }
 
     @After
