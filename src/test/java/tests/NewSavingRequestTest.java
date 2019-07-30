@@ -4,6 +4,7 @@ import base.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import pages.CalculatorPage;
 import utils.MathUtils;
 
@@ -52,7 +53,7 @@ public class NewSavingRequestTest extends TestBase{
     public void itShouldDisplayTwentyRequests() {
         CalculatorPage calculatorPage = new CalculatorPage(driver);
         for (int i = 0; i < 20; i++) {
-            calculatorPage.selectFund("Tom & Jerry corp");
+            calculatorPage.enterRandomFund();
             calculatorPage.enterOneTimeInvestment(String.valueOf(MathUtils.getRandomNumberInRange(1000,10000)));
             calculatorPage.enterYears(String.valueOf(MathUtils.getRandomNumberInRange(1,50)));
             calculatorPage.selectEmail("info@furbo.sk");
@@ -63,4 +64,5 @@ public class NewSavingRequestTest extends TestBase{
         driver.findElements(By.cssSelector("ul.saving-list > li > div.saving-detail"));
         Assert.assertEquals(20,driver.findElements(By.cssSelector("ul.saving-list > li > div.saving-detail")).size());
     }
+
 }
