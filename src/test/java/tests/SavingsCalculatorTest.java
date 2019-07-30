@@ -9,22 +9,28 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import pages.CalculatorPage;
 
 public class SavingsCalculatorTest extends TestBase {
 
     @Test
     public void itShouldDisplayTitle() {
+        CalculatorPage calculatorPage = new CalculatorPage(driver);
+        calculatorPage.selectFund("Tom & Jerry corp");
         Assert.assertEquals("Savings Calculator", driver.findElement(By.cssSelector("h1")).getText());
     }
 
     @Test
     public void itShouldDisableApplyButtonOnPageOpen() {
+        CalculatorPage calculatorPage = new CalculatorPage(driver);
+        calculatorPage.selectFund("Tom & Jerry corp");
         Assert.assertFalse(driver.findElement(By.cssSelector("button.btn-block")).isEnabled());
     }
 
     @Test
     public void itShouldEnabeAppplyButton() {
-
+        CalculatorPage calculatorPage = new CalculatorPage(driver);
+        calculatorPage.selectFund("Tom & Jerry corp");
         //1.vybrat fond
         new Select(driver.findElement(By.id("fundSelect"))).selectByVisibleText("Fellowship investment group");
         //2.zadat sumu
