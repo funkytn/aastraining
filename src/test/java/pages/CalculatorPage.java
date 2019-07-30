@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class CalculatorPage {
@@ -41,4 +42,12 @@ public class CalculatorPage {
         return pageDriver.findElement(By.cssSelector("div.result > div:nth-child(3) > p")).getText();
     }
 
+    public void submitRequest(){
+
+        pageDriver.findElement(By.cssSelector("button.btn-block")).click();
+    }
+    public WebElement getFirstSavingDetail() {
+
+        return pageDriver.findElement(By.cssSelector("ul.saving-list > li > div.saving-detail"));
+    }
 }
